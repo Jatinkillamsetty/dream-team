@@ -1,6 +1,53 @@
+'use client'
 import Button from '@/components/Button';
 import Input from '@/components/Input';
+import { use, useState } from 'react';
+const[login,setlogin]=useState(true);
+const[data,setdata]=useState({
+  name:'',email:'',password:''
+});
+const[showpassword,setpassword]=useState(False);
+const [errors, setErrors] = useState({});
+const [loading, setLoading] = useState(false);
+const handleChange = (field) => (e) => {
+  setFormData({
+    ...data,
+    [field]: e.target.value
+  });
 
+  if (errors[field]) {
+    setErrors({
+      ...errors,
+      [field]: ''
+    });
+  }
+};
+const validateform=()=>{
+  const newErrors={}
+  if (!login && !data.name.trim()){
+    newErrors.name="name is required here";
+  }
+  if (!data.email.trim()){
+    newErrors.email="email is required here";
+  }
+  else if (!formData.email.includes('@')) {
+    newErrors.email = "Email should be in a proper format";
+  }
+  if (!formData.password) {
+    newErrors.password = "Password is required";
+  } else if (formData.password.length < 6) {
+    newErrors.password = "Shortage of characters";
+  }
+  return Object.keys(newErrors)===0;
+
+}
+const handleSubmit = e => {
+  if (!validateform()){
+    return ;
+  }
+  setLoading(true);
+  
+}
 export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center p-4">
