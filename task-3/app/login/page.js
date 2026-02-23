@@ -15,11 +15,13 @@ const handleChange = (field) => (e) => {
     [field]: e.target.value
   });
 
+
   if (errors[field]) {
     setErrors({
       ...errors,
       [field]: ''
     });
+
   }
 };
 const validateform=()=>{
@@ -41,13 +43,26 @@ const validateform=()=>{
   return Object.keys(newErrors)===0;
 
 }
-const handleSubmit = e => {
-  if (!validateform()){
-    return ;
-  }
-  setLoading(true);
-  
-}
+const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      setLoading(true);
+      
+      setTimeout(() => {
+        console.log('Form sent:', data);
+        setLoading(false);
+      }, 1500);
+    }
+  };
+const loginoregister =() => {
+  setlogin(!login);
+  setErrors({ });
+  setdata({name:"",email:"",password:""});
+
+};
+
+
 export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center p-4">
