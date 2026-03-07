@@ -54,7 +54,11 @@ def login():
 @jwt_required()
 def get_habits():
     user_email = get_jwt_identity()
-    user_habits = [h for h in habits if h['user'] == user_email]
+    user_habits = []
+
+    for h in habits:
+        if h['user'] == user_email:
+            user_habits.append(h)
     return jsonify({'habits': user_habits}), 200
 
 @app.route('/api/habits', methods=['POST'])
@@ -76,7 +80,13 @@ def create_habit():
 @jwt_required()
 def delete_habit(id):
     global habits
-    habits = [h for h in habits if h['id'] != id]
+    new_habits = []
+
+    for h in habits:
+        if h['id'] != id:
+            new_habits.append(h)
+
+    habits = new_habits
     return jsonify({'message': 'Deleted'}), 200
 
 
@@ -97,15 +107,22 @@ def complete_habit(id):
 @jwt_required()
 def get_completions(id):
     user_email = get_jwt_identity()
-    habit_completions = [c for c in completions if c['habit_id'] == id and c['user'] == user_email]
+    habit_completions = []
+
+    for c in completions:
+        if c['habit_id'] == id and c['user'] == user_email:
+            habit_completions.append(c)
     return jsonify({'completions': habit_completions}), 200
 
 @app.route('/api/habits/<int:id>/streak', methods=['GET'])
 @jwt_required()
 def get_streak(id):
     user_email = get_jwt_identity()
-    habit_completions = [c for c in completions if c['habit_id'] == id and c['user'] == user_email]
-    
+    habit_completions = []
+
+    for c in completions:
+        if c['habit_id'] == id and c['user'] == user_email:
+            habit_completions.append(c)    
     if not habit_completions:
         return jsonify({'current': 0, 'longest': 0}), 200
     
@@ -135,9 +152,16 @@ def get_streak(id):
 @jwt_required()
 def get_analytics():
     user_email = get_jwt_identity()
-    user_habits = [h for h in habits if h['user'] == user_email]
-    user_completions = [c for c in completions if c['user'] == user_email]
-    
+    user_habits = []
+
+    for h in habits:
+        if h['user'] == user_email:
+            user_habits.append(h)    
+    user_completions = []
+
+    for c in completions:
+        if c['user'] == user_email:
+            user_completions.append(c)    
     return jsonify({
         'total_habits': len(user_habits),
         'total_completions': len(user_completions),
