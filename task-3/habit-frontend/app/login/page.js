@@ -86,10 +86,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-xl shadow-md w-96">
-        
-        <h2 className="text-2xl font-bold mb-6 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-black">
+
+      <div className="bg-white p-8 rounded-xl shadow-lg w-96">
+
+        <h2 className="text-2xl font-bold mb-6 text-center text-red-600">
           {login ? "Login" : "Register"}
         </h2>
 
@@ -127,16 +128,17 @@ export default function LoginPage() {
         </form>
 
         {errors.general && (
-          <p className="text-red-500 text-sm text-center mt-3">
+          <p className="text-red-600 text-sm text-center mt-3">
             {errors.general}
           </p>
         )}
 
-        <p className="text-sm text-center mt-4">
+        <p className="text-sm text-center mt-4 text-black">
           {login ? "Don't have an account?" : "Already have an account?"}
+
           <span
             onClick={toggleMode}
-            className="text-blue-500 cursor-pointer ml-1"
+            className="text-red-600 font-semibold cursor-pointer ml-1 hover:text-red-700"
           >
             {login ? "Register" : "Login"}
           </span>

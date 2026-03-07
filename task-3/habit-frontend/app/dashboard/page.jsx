@@ -87,32 +87,32 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading your habits...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-500 mx-auto mb-4"></div>
+          <p className="text-gray-300">Loading your habits...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-black">
       
-      <header className="bg-white shadow-md">
+      <header className="bg-black border-b border-gray-800 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-red-500 rounded-lg flex items-center justify-center">
                 <span className="text-white text-xl"></span>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Habit Tracker</h1>
-                <p className="text-sm text-gray-600">s</p>
+                <h1 className="text-2xl font-bold text-white">Habit Tracker</h1>
+                <p className="text-sm text-gray-400">s</p>
               </div>
             </div>
             <Button onClick={logout} variant="outline" size="sm">
-              Logout
+              Logoutm 
             </Button>
           </div>
         </div>
@@ -125,33 +125,33 @@ export default function Dashboard() {
             
            
             <div className="bg-white p-6 rounded-xl shadow-md text-center">
-              <p className="text-4xl font-bold text-indigo-600">
+              <p className="text-4xl font-bold text-black">
                 {analytics.total_habits}
               </p>
-              <p className="text-gray-600 mt-2">Total Habits</p>
+              <p className="text-gray-500 mt-2">Total Habits</p>
             </div>
             
             
             <div className="bg-white p-6 rounded-xl shadow-md text-center">
-              <p className="text-4xl font-bold text-green-600">
+              <p className="text-4xl font-bold text-black">
                 {analytics.total_completions}
               </p>
-              <p className="text-gray-600 mt-2">Total Completions</p>
+              <p className="text-gray-500 mt-2">Total Completions</p>
             </div>
             
             
             <div className="bg-white p-6 rounded-xl shadow-md text-center">
-              <p className="text-4xl font-bold text-purple-600">
+              <p className="text-4xl font-bold text-red-500">
                 {analytics.completion_rate}%
               </p>
-              <p className="text-gray-600 mt-2">Success Rate</p>
+              <p className="text-gray-500 mt-2">Success Rate</p>
             </div>
           </div>
         )}
 
         
         <div className="bg-white p-6 rounded-xl shadow-md mb-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Enter your  New Habit</h2>
+          <h2 className="text-xl font-bold text-black mb-4">Enter your  New Habit</h2>
           <div className="flex gap-2">
             <Input
               placeholder="whats your habit?"
@@ -173,7 +173,7 @@ export default function Dashboard() {
        
         {habits.length > 0 ? (
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Your Habits</h2>
+            <h2 className="text-2xl font-bold text-white mb-4">Your Habits</h2>
             <div className="grid md:grid-cols-3 gap-6">
               {habits.map(habit => (
                 <div 
@@ -183,7 +183,7 @@ export default function Dashboard() {
                   
                   
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-bold text-gray-900">
+                    <h3 className="text-lg font-bold text-black">
                       {habit.name}
                     </h3>
                     <button
@@ -197,10 +197,10 @@ export default function Dashboard() {
                   
                   
                   {streaks[habit.id] && (
-                    <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+                    <div className="mb-4 p-3 bg-gray-100 rounded-lg">
                       <p className="text-sm text-gray-600">Current Streak</p>
-                      <p className="text-3xl font-bold text-indigo-600">
-                        {streaks[habit.id].current} 🔥
+                      <p className="text-3xl font-bold text-red-500">
+                        {streaks[habit.id].current} 
                       </p>
                       <p className="text-xs text-gray-500 mt-1">
                         Best: {streaks[habit.id].longest} days
@@ -214,7 +214,7 @@ export default function Dashboard() {
                     variant="success"
                     fullWidth
                   >
-                    ✓ Mark Complete
+                    Mark as done
                   </Button>
                 </div>
               ))}
@@ -223,11 +223,11 @@ export default function Dashboard() {
         ) : (
           <div className="text-center py-16 bg-white rounded-xl shadow-md">
             
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
-              No Habits Yet
+            <h3 className="text-xl font-bold text-black mb-2">
+              No Habits are added
             </h3>
-            <p className="text-gray-600 mb-6">
-              Start by adding your first habit above!
+            <p className="text-gray-500 mb-6">
+              Start by adding habit of yours
             </p>
           </div>
         )}
