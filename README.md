@@ -21,3 +21,33 @@ I will:
 - Actively participate in discussions and club activities
 - Dedicate time and effort to collaborative projects
 - Strive to make valuable contributions that reflect positively on the club
+
+# My Projects
+
+## Software Projects
+- **Discord Moderation Bot**  
+  A Discord bot that automates server administration tasks such as moderation, role management, and command handling.
+
+- **Music Streaming Web App (In Progress)**  
+  A Spotify-inspired web music player with features like audio playback, playlists, and interactive UI.
+
+- **Text Editor using VIM**  
+  Configuration and usage of VIM as a powerful terminal-based text editor for efficient coding.
+
+---
+
+## Systems Programming Projects (C)
+
+- **listit.c**  
+  Directory listing utility inspired by the Unix `ls` command. Uses `opendir()` and `readdir()` with flags `-a`, `-l`, and `-r`.
+
+- **showtext.c**  
+  File viewer similar to the Unix `cat` command. Implements flags `-n`, `-s`, and `-e` using `fopen()`, `fgets()`, and `fclose()`.
+
+- **countin.c**  
+  File statistics tool similar to `wc` that counts lines, words, and characters using file reading and loops.
+
+- **finder.c**  
+  Pattern searching utility similar to `grep`, supporting match, inverted match, and match counting.
+
+---
